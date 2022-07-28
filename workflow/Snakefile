@@ -9,8 +9,9 @@ min_version("6.0")
 
 # Obtain real path for Snakefile
 SDIR = os.path.realpath(os.path.dirname(srcdir("Snakefile")))
-# Run everything in safe mode
-shell.prefix(f"set -euxo pipefail;")
+# Run everything in safe mode: http://redsymbol.net/articles/unofficial-bash-strict-mode/
+# -x just prints out the commands that you just ran
+shell.prefix(f"set -euxo pipefail; IFS=$'\n\t'")
 
 # Save report on the workflow execution
 report: "report/workflow.rst"
