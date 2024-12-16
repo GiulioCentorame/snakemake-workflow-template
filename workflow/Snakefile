@@ -5,10 +5,10 @@
 import os
 import sys
 from snakemake.utils import min_version
-min_version("6.0")
+min_version("8.0")
 
 # Obtain real path for Snakefile
-SDIR = os.path.realpath(os.path.dirname(srcdir("Snakefile")))
+SDIR = os.path.realpath(os.path.dirname(workflow.source_path("Snakefile")))
 # Run everything in safe mode: http://redsymbol.net/articles/unofficial-bash-strict-mode/
 # -x just prints out the commands that you just ran
 shell.prefix(f"set -euxo pipefail; IFS=$'\n\t'")
